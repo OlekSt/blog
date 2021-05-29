@@ -43,7 +43,6 @@ async def get_post(post_id: int = Path(..., gt=0)):
 @app.put("/blog/{post_id}")
 def update_post(post_id: int, post: Post):
     postdb[post_id - 1] = post
-    print(post)
     return {"message": "Post has been updated succesfully!"}
 
 
