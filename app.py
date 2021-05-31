@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path, HTTPException
+from fastapi import FastAPI, Path, HTTPException, Response
 from pydantic import BaseModel
 from typing import Optional, Text
 from datetime import datetime
@@ -73,4 +73,4 @@ def delete_blog(blog_id: int):
     if blog_id not in blogdb:
         raise HTTPException(status_code=404, detail="Blog ID not found.")
     del blogdb[blog_id]
-    return {"message": "Blog has been deleted succesfully"}
+    return Response(status_code=204)
