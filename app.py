@@ -31,7 +31,7 @@ async def home():
     return {"home": "Home page"}
 
 
-@app.get("/blog")
+@app.get("/blogs")
 async def get_blogs():
     return blogdb
 
