@@ -46,10 +46,13 @@ async def create_blog(blog_id: int, blog: Blog):
 async def get_blog(blog_id: int = Path(None,
                                        description="ID of your blog entry",
                                        gt=0)):
-    return blogdb[blog_id]
+    if blog_id not in blogdb:
+        return {"Error": "Blog does not exist"}
+    else:
+        return blogdb[blog_id]
 
 
-@app.put("/update-blog/{post_id}")
+@app.patch("/update-blog/{blog_id}")
 def update_blog(blog_id: int, blog: updateBlog):
     if blog_id not in blogdb:
         return {"Error": "Blog does not exist"}
@@ -65,5 +68,5 @@ def update_blog(blog_id: int, blog: updateBlog):
 
 @app.delete("/delete-blog/{blog_id}")
 def delete_blog(blog_id: int):
-    blogdb.pop(blog_id)
+    del blogdb[blog_id]
     return {"message": "Blog has been deleted succesfully"}
