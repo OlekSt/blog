@@ -1,7 +1,7 @@
 ### Mini blog
 ##### Built on Python + FastAPI
 
-The objective is to create a simple  API which will perform basic CRUD functions:
+The objective is to create a simple blog with REST API which will perform basic CRUD functions:
 - Create a new blog post
 - Edit a blog 
 - Delete a blog 
